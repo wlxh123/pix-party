@@ -2,167 +2,194 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>PROJECT PIX</title>
+  <title>PROJECT PIX | PICK YOUR VIBE, FIX THE NIGHT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; background-color: #050505; }
+    .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.08); }
+    .neon-text { text-shadow: 0 0 15px rgba(255, 255, 0, 0.4); }
+    .gradient-text { background: linear-gradient(to right, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .policy-item { border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.5rem; margin-bottom: 1.5rem; }
+    input:focus, select:focus { border-color: #facc15 !important; outline: none; }
+    ::placeholder { color: #444 !important; font-size: 0.8rem; }
+  </style>
 </head>
-<body class="bg-black text-white font-sans tracking-tight">
+<body class="text-white antialiased overflow-x-hidden">
 
-<header class="fixed top-0 w-full z-50 bg-black/80 border-b border-white/10 backdrop-blur-md">
-  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-    <div class="text-xl font-black italic tracking-widest text-white uppercase">PIX</div>
-    <div class="flex gap-6 text-xs font-bold uppercase tracking-widest">
-      <a href="#story" class="hover:text-yellow-400 transition">스토리</a>
-      <a href="#party" class="hover:text-yellow-400 transition">파티일정</a>
-      <a href="#join" class="text-yellow-400">신청하기</a>
+<nav class="fixed top-0 w-full z-[100] border-b border-white/5 bg-black/60 backdrop-blur-xl">
+  <div class="max-w-5xl mx-auto flex justify-between items-center px-6 py-5">
+    <div class="text-2xl font-black italic tracking-widest uppercase">PIX</div>
+    <div class="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
+      <a href="#story" class="hover:text-white transition">Story</a>
+      <a href="#party" class="hover:text-white transition">Schedule</a>
+      <a href="#join" class="text-yellow-400 font-black">Apply Now</a>
     </div>
   </div>
-</header>
+</nav>
 
-<main class="pt-20">
+<main>
+  <section class="relative h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-black z-10"></div>
+    <img src="party1.png" class="absolute inset-0 w-full h-full object-cover scale-110 opacity-60">
+    <div class="relative z-20 text-center space-y-4 px-6">
+      <h1 class="text-6xl md:text-9xl font-black italic tracking-tighter uppercase leading-none">
+        PICK & <span class="gradient-text text-yellow-400">FIX</span>
+      </h1>
+      <p class="text-[10px] md:text-xs tracking-[0.6em] font-light text-gray-300 uppercase">Shinchon Premium Social Archive</p>
+    </div>
+  </section>
 
-<section class="relative h-[80vh] flex items-center justify-center overflow-hidden">
-  <img src="party1.png" class="absolute inset-0 w-full h-full object-cover opacity-50 scale-105">
-  <div class="relative text-center px-6">
-    <h1 class="text-4xl md:text-7xl font-black mb-6 leading-tight italic uppercase tracking-tighter text-white">
-      우리가 고른 밤,<br><span class="text-yellow-400">우리가 FIX합니다</span>
-    </h1>
-    <p class="text-sm md:text-lg font-medium tracking-[0.2em] text-gray-300">신촌에서 가장 감각적인 소셜 파티</p>
-  </div>
-</section>
+  <section id="story" class="py-32 px-6 max-w-4xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-20 items-center">
+      <div class="space-y-8 text-center md:text-left">
+        <h2 class="text-4xl font-black italic uppercase leading-tight">
+          WE <span class="text-yellow-400">PICK</span>,<br>THEN <span class="text-yellow-400">FIX</span>.
+        </h2>
+        <p class="text-sm text-gray-400 leading-relaxed font-light">
+          완벽한 장소와 감각적인 사람들을 <span class="text-white font-bold italic">PICK</span>하고,<br>
+          그 안에서 피어나는 소중한 인연을 <span class="text-white font-bold italic">FIX</span>(고정)합니다.<br><br>
+          우리는 아쉬웠던 신촌의 밤을 새롭게 <span class="text-white font-bold italic">FIX</span>(수정)하여,<br>
+          당신이 머물고 싶은 최고의 분위기를 완성합니다.
+        </p>
+      </div>
+      <div class="glass p-2 rounded-[2.5rem]">
+        <img src="party2.png" class="rounded-[2rem] opacity-80 w-full object-cover">
+      </div>
+    </div>
+  </section>
 
-<section id="story" class="py-24 px-6 max-w-4xl mx-auto border-b border-white/5">
-  <div class="grid md:grid-cols-2 gap-16 items-center">
-    <div>
-      <h2 class="text-2xl font-black mb-8 italic text-white/90 uppercase tracking-widest">PROJECT PIX</h2>
-      <p class="text-gray-400 leading-relaxed text-sm space-y-4">
-        우리도 똑같은 '게스트'였습니다.<br><br>
-        술 한잔에 설레고, 새로운 인연을 기대하며 신촌을 전전하던 친구들이 모였습니다. 하지만 늘 2%가 아쉬웠습니다.<br><br>
-        그 아쉬움을 해결하기 위해 우리가 직접 가고 싶은 밤을 만들었습니다. <strong>PROJECT PIX</strong>의 감각적인 파티에 당신을 초대합니다.
+  <section id="party" class="py-32 px-6 max-w-4xl mx-auto">
+    <div class="glass p-12 md:p-16 rounded-[4rem] relative overflow-hidden text-center md:text-left">
+      <div class="flex flex-col md:flex-row justify-between items-end gap-12 relative z-10">
+        <div class="space-y-4 w-full md:w-auto">
+          <h2 class="text-[10px] font-black tracking-[0.4em] text-yellow-400 uppercase">Reservation Open</h2>
+          <h3 class="text-5xl md:text-7xl font-black italic tracking-tighter">02.06 FRI</h3>
+          <p class="text-gray-500 font-bold uppercase tracking-widest italic text-sm text-center md:text-left">Shinchon Private Session</p>
+        </div>
+        <div class="flex gap-12 font-black italic mx-auto md:mx-0">
+          <div class="text-center border-r border-white/10 pr-12">
+            <p class="text-[10px] text-gray-600 mb-2 not-italic">MALE</p>
+            <p class="text-4xl text-white neon-text">8<span class="text-gray-800 text-sm">/12</span></p>
+          </div>
+          <div class="text-center">
+            <p class="text-[10px] text-gray-600 mb-2 not-italic">FEMALE</p>
+            <p class="text-4xl text-white neon-text">10<span class="text-gray-800 text-sm">/12</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="join" class="py-32 px-6 max-w-2xl mx-auto">
+    <h2 class="text-5xl font-black italic text-center mb-16 uppercase underline decoration-white/10 underline-offset-8">Registration</h2>
+    
+    <form id="pix-form" onsubmit="submitToGoogleForm(event)" class="space-y-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="md:col-span-2 border-b border-white/10 pb-2">
+          <label class="text-[10px] font-black text-gray-600 uppercase tracking-widest">Select Date</label>
+          <select id="formUrl" required class="w-full bg-transparent py-3 focus:outline-none font-bold text-white">
+            <option value="" class="bg-black text-gray-500">날짜를 선택해 주세요</option>
+            <option value="https://docs.google.com/forms/d/e/1FAIpQLSe1uOnq_r8W16u1kaZNo326NOw2kYdTHwGhbUm4MNS58RzJMg/formResponse" class="bg-black text-white">02월 06일 (금) 신촌 파티</option>
+          </select>
+        </div>
+        
+        <input name="entry.1271163545" required placeholder="이름 (NAME)" class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
+        <input name="entry.2043201145" required placeholder="나이 (AGE)" class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
+        
+        <input name="entry.84832899" required placeholder="연락처 (PHONE)" class="md:col-span-2 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
+        
+        <input name="entry.1490638509" required placeholder="SNS ID (@포함 필수,없을경우 0입력)" class="md:col-span-2 bg-white/5 border border-white/20 rounded-2xl px-6 py-4 focus:outline-none font-black text-yellow-400 placeholder-yellow-400/30">
+
+        <select name="entry.1285611880" id="gender" required class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold uppercase">
+          <option value="" class="bg-black text-gray-500 italic">성별 (GENDER)</option>
+          <option value="남" class="bg-black">남성 (MALE)</option>
+          <option value="여" class="bg-black">여성 (FEMALE)</option>
+        </select>
+        <input name="entry.1839414996" placeholder="MBTI" class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold uppercase">
+
+        <input name="entry.1251778023" placeholder="직업 (JOB)" class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
+        <input name="entry.528781690" placeholder="취미 (HOBBY)" class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
+        
+        <input name="entry.790058610" placeholder="이상형 (IDEAL TYPE)" class="md:col-span-2 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
+      </div>
+
+      <div class="glass p-8 rounded-[3rem] space-y-6">
+        <h4 class="text-xs font-black text-white uppercase tracking-widest border-b border-white/10 pb-4 italic font-bold">PIX Code of Conduct</h4>
+        
+        <div class="policy-item">
+          <p class="text-[11px] font-black text-yellow-400 mb-1 uppercase tracking-widest">Identification</p>
+          <p class="text-[11px] text-gray-500 leading-relaxed">입장 시 <strong>신분증 확인</strong>이 필수입니다. 미지참 시 입장이 제한되며 미성년자는 참여 불가합니다.</p>
+        </div>
+
+        <div class="policy-item">
+          <p class="text-[11px] font-black text-yellow-400 mb-1 uppercase tracking-widest">Refund & Date Change</p>
+          <p class="text-[11px] text-gray-500 leading-relaxed italic font-bold text-white/80">
+            파티 시작 7일 전부터 환불 및 날짜 변경은 불가합니다.<br>
+            (예: 토요일 파티 기준 전주 금요일 24:00까지만 환불 가능)
+          </p>
+        </div>
+
+        <div class="policy-item border-red-900/50">
+          <p class="text-[11px] font-black text-red-500 mb-1 uppercase tracking-widest">Behavioral Policy</p>
+          <p class="text-[11px] text-gray-500 leading-relaxed">
+            만취자, 과도한 스킨십 등 피해 행위 시 <strong>즉시 귀가 조치</strong>됩니다. 
+            사고 책임은 본인에게 있으며, 기물 손괴 시 <strong>원가 배상</strong>이 원칙입니다.
+          </p>
+        </div>
+
+        <div class="policy-item border-red-500">
+          <p class="text-[11px] font-black text-red-500 mb-1 uppercase tracking-widest">Restrict Industry Staff</p>
+          <p class="text-[11px] text-gray-500 leading-relaxed italic">
+            <strong>타 파티 관계자(호스트, 스탭)는 입장이 엄격히 금지됩니다.</strong> 적발 시 즉시 강제 퇴거 및 향후 민/형사상 법적 조치가 취해질 수 있습니다.
+          </p>
+        </div>
+
+        <div class="policy-item">
+          <p class="text-[11px] font-black text-white mb-1 uppercase tracking-widest">Filming Consent</p>
+          <p class="text-[11px] text-gray-500 leading-relaxed">
+            파티 중 일부 촬영이 진행됩니다. 인물 식별 불가 수준의 <strong>블러 처리</strong> 후 홍보용으로 활용될 수 있습니다.
+          </p>
+        </div>
+        
+        <p class="text-[10px] text-center text-gray-600 font-bold uppercase tracking-widest pt-4 italic">규정 위반 시 어떠한 경우에도 환불 불가 및 강제 퇴거됩니다.</p>
+      </div>
+
+      <button type="submit" class="w-full bg-white text-black py-7 rounded-full font-black hover:bg-yellow-400 transition-all shadow-[0_20px_60px_rgba(255,255,255,0.1)] uppercase tracking-[0.5em] text-sm">
+        Agree and Fix the Night
+      </button>
+    </form>
+  </section>
+
+  <section id="account" class="py-32 px-6 max-w-2xl mx-auto hidden animate-[fadeIn_0.5s_ease-out]">
+    <div class="glass p-12 md:p-20 rounded-[4rem] text-center space-y-12 shadow-[0_0_100px_rgba(255,255,255,0.02)]">
+      <div class="space-y-4">
+        <div class="inline-block px-4 py-1 border border-yellow-400/50 text-yellow-400 text-[10px] font-black rounded-full uppercase italic">Request Confirmed</div>
+        <h2 class="text-5xl font-black italic tracking-tighter uppercase">PAYMENT</h2>
+        <p id="accountInfo" class="text-gray-400 text-sm font-black uppercase tracking-widest"></p>
+      </div>
+
+      <div class="py-12 border-y border-white/5 space-y-4">
+        <p class="text-xl font-bold italic tracking-widest">새마을금고 (MG BANK)</p>
+        <p class="text-4xl md:text-5xl font-black tracking-tighter text-white neon-text">9003 2636 77387</p>
+        <p class="text-xl font-black uppercase text-gray-400 italic tracking-tighter underline underline-offset-8 decoration-white/10">HAN DONG HO</p>
+      </div>
+
+      <a id="smsBtn" href="#" class="block w-full bg-yellow-400 text-black py-6 rounded-full font-black shadow-2xl hover:bg-white transition-all uppercase tracking-[0.3em] text-xs">
+        입금 확인문자 전송하기
+      </a>
+
+      <p class="text-[10px] text-gray-600 font-bold tracking-widest uppercase italic">
+        입금자명: 성함 + 연락처 뒷 2자리<br>
+        (입금 확인 후 24시간 이내로 안내 문자가 전송됩니다.)
       </p>
     </div>
-    <img src="party2.png" class="rounded-[2rem] border border-white/10 shadow-2xl opacity-80">
-  </div>
-</section>
-
-<section id="party" class="py-24 px-6 max-w-4xl mx-auto">
-  <div class="bg-white/5 border border-white/10 p-10 rounded-[3rem] shadow-2xl relative">
-    <div class="mb-12">
-      <h3 class="text-3xl font-black text-white italic mb-2 tracking-tighter">02월 06일 (금) | 신촌</h3>
-      <div class="flex gap-10 mt-6">
-        <div class="flex flex-col">
-          <span class="text-[10px] text-gray-500 uppercase font-black mb-1">남성 인원</span>
-          <span class="text-blue-500 font-mono text-3xl font-black italic">8 <small class="text-gray-800 text-xs italic">/ 12</small></span>
-        </div>
-        <div class="flex flex-col border-l border-white/10 pl-10">
-          <span class="text-[10px] text-gray-500 uppercase font-black mb-1">여성 인원</span>
-          <span class="text-pink-500 font-mono text-3xl font-black italic">10 <small class="text-gray-800 text-xs italic">/ 12</small></span>
-        </div>
-      </div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-[11px] font-bold text-gray-400 uppercase tracking-widest">
-      <p class="p-5 bg-white/5 rounded-2xl border border-white/5">1차 20:30 – 23:30</p>
-      <p class="p-5 bg-white/5 rounded-2xl border border-white/5">2차 24:00 – 02:30</p>
-      <p class="p-5 bg-white/10 rounded-2xl border border-white/20 text-white italic">장소: 신촌 (개별 공지)</p>
-    </div>
-  </div>
-</section>
-
-<section id="join" class="py-24 px-6 max-w-xl mx-auto">
-  <h2 class="text-3xl font-black text-center mb-16 italic tracking-widest uppercase text-yellow-400 underline decoration-white/20 underline-offset-8">파티 신청하기</h2>
-  <form id="pix-form" onsubmit="submitToGoogleForm(event)" class="space-y-8">
-    
-    <div class="flex flex-col border-b border-white/20">
-      <label class="text-[10px] font-black text-gray-500 mb-1">참여 날짜 선택</label>
-      <select id="formUrl" required class="w-full bg-transparent py-3 focus:outline-none text-lg font-bold text-white">
-        <option value="" class="bg-black text-gray-500">날짜를 선택해 주세요</option>
-        <option value="https://docs.google.com/forms/d/e/1FAIpQLSe1uOnq_r8W16u1kaZNo326NOw2kYdTHwGhbUm4MNS58RzJMg/formResponse" class="bg-black text-white">02월 06일 (금) 신촌 파티</option>
-      </select>
-    </div>
-
-    <div class="grid grid-cols-2 gap-8">
-      <div class="border-b border-white/20 focus-within:border-white transition">
-        <label class="text-[10px] font-black text-gray-500 uppercase">이름</label>
-        <input name="entry.1271163545" required class="w-full bg-transparent py-2 focus:outline-none text-white font-bold">
-      </div>
-      <div class="border-b border-white/20 focus-within:border-white transition">
-        <label class="text-[10px] font-black text-gray-500 uppercase">나이</label>
-        <input name="entry.2043201145" required class="w-full bg-transparent py-2 focus:outline-none text-white font-bold">
-      </div>
-    </div>
-    
-    <div class="border-b border-white/20 focus-within:border-white transition">
-      <label class="text-[10px] font-black text-gray-500 uppercase">전화번호</label>
-      <input name="entry.84832899" id="userPhone" required placeholder="010-0000-0000" class="w-full bg-transparent py-2 focus:outline-none text-white font-bold tracking-widest">
-    </div>
-
-    <div class="border-b border-white/20 focus-within:border-white transition">
-      <label class="text-[10px] font-black text-gray-500 uppercase">성별</label>
-      <select name="entry.1285611880" id="gender" required class="w-full bg-transparent py-2 focus:outline-none text-white font-bold">
-        <option value="" class="bg-black">선택하세요</option>
-        <option value="남" class="bg-black">남자 (MALE)</option>
-        <option value="여" class="bg-black">여자 (FEMALE)</option>
-      </select>
-    </div>
-
-    <div class="grid grid-cols-2 gap-8">
-      <div class="border-b border-white/20 focus-within:border-white transition">
-        <label class="text-[10px] font-black text-gray-500 uppercase">직업</label>
-        <input name="entry.1251778023" class="w-full bg-transparent py-2 focus:outline-none text-white font-bold text-sm">
-      </div>
-      <div class="border-b border-white/20 focus-within:border-white transition">
-        <label class="text-[10px] font-black text-gray-500 uppercase">MBTI</label>
-        <input name="entry.1839414996" class="w-full bg-transparent py-2 focus:outline-none text-white font-bold text-sm">
-      </div>
-    </div>
-
-    <div class="border-b border-white/20 focus-within:border-white transition">
-      <label class="text-[10px] font-black text-gray-500 uppercase">취미 / 이상형</label>
-      <div class="flex gap-4">
-        <input name="entry.528781690" placeholder="취미" class="w-1/2 bg-transparent py-2 focus:outline-none text-white font-bold text-sm">
-        <input name="entry.790058610" placeholder="이상형" class="w-1/2 bg-transparent py-2 focus:outline-none text-white font-bold text-sm border-l border-white/10 pl-4">
-      </div>
-    </div>
-    
-    <div class="border-b border-white/20 focus-within:border-yellow-400 transition">
-      <label class="text-[10px] font-black text-yellow-400 uppercase tracking-widest">sns 아이디 (@ 필수,sns 안할 경우 @없음)</label>
-      <input name="entry.1490638509" required placeholder="@project_pix" class="w-full bg-transparent py-2 focus:outline-none text-white font-black">
-    </div>
-
-    <button type="submit" class="w-full bg-yellow-400 text-black py-6 font-black hover:bg-white transition-all uppercase tracking-[0.4em] mt-8 rounded-full shadow-2xl">
-      신청 완료하기
-    </button>
-  </form>
-</section>
-
-<section id="account" class="py-32 px-6 max-w-xl mx-auto hidden text-center">
-  <div class="bg-gradient-to-b from-white/10 to-transparent p-12 rounded-[3rem] border border-white/20 shadow-2xl">
-    <div class="mb-10 inline-block bg-white text-black px-6 py-2 rounded-full text-[10px] font-black tracking-widest uppercase italic">Reservation Started</div>
-    <h2 class="text-4xl font-black mb-6 italic tracking-tighter text-white uppercase underline underline-offset-8 decoration-white/10">참가비 입금</h2>
-    <p id="accountInfo" class="mb-10 text-xl leading-relaxed text-gray-400 font-bold"></p>
-    
-    <div class="bg-white text-black p-10 rounded-3xl mb-10 shadow-2xl scale-105">
-      <p class="text-[10px] font-black text-gray-400 mb-4 tracking-[0.3em] uppercase">입금 계좌 정보</p>
-      <p class="text-xl font-bold mb-1 italic">새마을금고</p>
-      <p class="text-3xl font-black tracking-tighter">9003 2636 77387</p>
-      <p class="text-lg mt-2 font-black italic">한동호</p>
-    </div>
-
-    <a id="smsBtn" href="#" class="block w-full bg-yellow-400 text-black py-5 rounded-full font-black mb-6 hover:bg-white transition-all shadow-xl uppercase tracking-widest text-sm">
-      입금 확인문자 보내기
-    </a>
-
-    <p class="text-gray-600 text-[10px] uppercase font-bold tracking-widest leading-relaxed">
-      입금자명: 이름 + 전화번호 뒤 2자리<br>
-      입금 확인 후 24시간 이내로 확정 문자가 발송됩니다.
-    </p>
-  </div>
-</section>
-
+  </section>
 </main>
 
-<footer class="py-20 text-center text-gray-700 text-[10px] tracking-[0.4em] font-black uppercase border-t border-white/5">
-  © PROJECT PIX. SHINCHON VIBE FIXER.
+<footer class="py-20 text-center opacity-20 border-t border-white/5 font-black text-[10px] uppercase tracking-[0.4em]">
+  © PROJECT PIX | EST 2026
 </footer>
 
 <script>
@@ -170,30 +197,19 @@
     e.preventDefault();
     const googleFormUrl = document.getElementById("formUrl").value;
     const formData = new FormData(document.getElementById("pix-form"));
-    
     const userName = document.querySelector('input[name="entry.1271163545"]').value;
     const dateText = document.getElementById("formUrl").options[document.getElementById("formUrl").selectedIndex].text;
 
-    fetch(googleFormUrl, {
-      method: "POST",
-      mode: "no-cors",
-      body: formData
-    }).then(() => {
+    fetch(googleFormUrl, { method: "POST", mode: "no-cors", body: formData }).then(() => {
       const gender = document.getElementById("gender").value;
       let price = (gender === "남") ? "40,000원" : "25,000원";
-
-      const smsMessage = `PIX 파티 신청 완료! \n- 성함: ${userName} \n- 날짜: ${dateText} \n입금 완료했습니다. 확인 부탁드립니다!`;
+      const smsMessage = `PIX 신청 완료! \n- 성함: ${userName} \n- 날짜: ${dateText} \n입금 완료했습니다.`;
       document.getElementById("smsBtn").href = `sms:01057416107?body=${encodeURIComponent(smsMessage)}`;
-
-      document.getElementById("accountInfo").innerHTML = 
-        `<span class="text-xs tracking-[0.2em] text-gray-500 font-light italic">${userName}님, 신청되었습니다.</span><br>
-         <span class="text-white font-black italic">${dateText}</span><br>
-         참가비: <span class="text-white font-black underline decoration-yellow-400">${price}</span>`;
-      
+      document.getElementById("accountInfo").innerText = `${userName}님 | ${dateText} | ${price}`;
       document.getElementById("join").classList.add("hidden");
       document.getElementById("account").classList.remove("hidden");
       window.scrollTo({ top: document.getElementById("account").offsetTop - 100, behavior: "smooth" });
-    }).catch(err => alert("신청 중 오류가 발생했습니다."));
+    }).catch(err => alert("System Error. Please try again."));
   }
 </script>
 
