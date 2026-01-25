@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -5,15 +6,17 @@
   <title>PROJECT PIX | PICK YOUR VIBE, FIX THE NIGHT</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Noto+Sans+KR:wght@300;500;900&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; background-color: #050505; }
+    body { font-family: 'Inter', 'Noto Sans KR', sans-serif; background-color: #050505; }
     .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.08); }
-    .neon-text { text-shadow: 0 0 15px rgba(255, 255, 0, 0.4); }
+    .neon-text { text-shadow: 0 0 30px rgba(255, 255, 0, 0.6); color: #fff; }
     .gradient-text { background: linear-gradient(to right, #fff, #888); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .policy-item { border-left: 1px solid rgba(255,255,255,0.1); padding-left: 1.5rem; margin-bottom: 1.5rem; }
     input:focus, select:focus { border-color: #facc15 !important; outline: none; }
-    ::placeholder { color: #444 !important; font-size: 0.8rem; }
+    
+    /* 인원 현황 강조 애니메이션 */
+    @keyframes pulse-border { 0% { border-color: rgba(255,255,255,0.1); } 50% { border-color: rgba(250, 204, 21, 0.5); } 100% { border-color: rgba(255,255,255,0.1); } }
+    .status-box { animation: pulse-border 3s infinite; }
   </style>
 </head>
 <body class="text-white antialiased overflow-x-hidden">
@@ -24,7 +27,7 @@
     <div class="flex gap-8 text-[10px] font-bold uppercase tracking-[0.2em] text-gray-400">
       <a href="#story" class="hover:text-white transition">Story</a>
       <a href="#party" class="hover:text-white transition">Schedule</a>
-      <a href="#join" class="text-yellow-400 font-black">Apply Now</a>
+      <a href="#join" class="text-yellow-400 font-black">Apply</a>
     </div>
   </div>
 </nav>
@@ -49,8 +52,8 @@
         </h2>
         <p class="text-sm text-gray-400 leading-relaxed font-light">
           완벽한 장소와 감각적인 사람들을 <span class="text-white font-bold italic">PICK</span>하고,<br>
-          그 안에서 피어나는 소중한 인연을 <span class="text-white font-bold italic">FIX</span>(고정)합니다.<br><br>
-          우리는 아쉬웠던 신촌의 밤을 새롭게 <span class="text-white font-bold italic">FIX</span>(수정)하여,<br>
+          그 안에서 피어나는 소중한 인연을 <span class="text-white font-bold italic">FIX(고정)</span>합니다.<br><br>
+          우리는 아쉬웠던 신촌의 밤을 새롭게 <span class="text-white font-bold italic">FIX(수정)</span>하여,<br>
           당신이 머물고 싶은 최고의 분위기를 완성합니다.
         </p>
       </div>
@@ -60,110 +63,128 @@
     </div>
   </section>
 
-  <section id="party" class="py-32 px-6 max-w-4xl mx-auto">
-    <div class="glass p-12 md:p-16 rounded-[4rem] relative overflow-hidden text-center md:text-left">
-      <div class="flex flex-col md:flex-row justify-between items-end gap-12 relative z-10">
-        <div class="space-y-4 w-full md:w-auto">
-          <h2 class="text-[10px] font-black tracking-[0.4em] text-yellow-400 uppercase">Reservation Open</h2>
-          <h3 class="text-5xl md:text-7xl font-black italic tracking-tighter">02.06 FRI</h3>
-          <p class="text-gray-500 font-bold uppercase tracking-widest italic text-sm text-center md:text-left">Shinchon Private Session</p>
-        </div>
-        <div class="flex gap-12 font-black italic mx-auto md:mx-0">
-          <div class="text-center border-r border-white/10 pr-12">
-            <p class="text-[10px] text-gray-600 mb-2 not-italic">MALE</p>
-            <p class="text-4xl text-white neon-text">8<span class="text-gray-800 text-sm">/12</span></p>
-          </div>
-          <div class="text-center">
-            <p class="text-[10px] text-gray-600 mb-2 not-italic">FEMALE</p>
-            <p class="text-4xl text-white neon-text">10<span class="text-gray-800 text-sm">/12</span></p>
-          </div>
-        </div>
+  <section id="party" class="py-24 px-6 max-w-5xl mx-auto">
+    <div class="mb-12 text-center md:text-left">
+      <h2 class="text-[10px] font-black tracking-[0.4em] text-yellow-400 uppercase mb-2">Reservation Open</h2>
+      <h3 class="text-4xl font-black italic tracking-tighter">다가오는 파티</h3>
+    </div>
+    
+    <div id="party-container" class="space-y-12"></div>
+  </section>
+<section class="py-20 px-6 max-w-3xl mx-auto">
+  <div class="glass p-10 md:p-14 rounded-[3rem] space-y-8 border border-white/10">
+    <h3 class="text-xl md:text-2xl font-black italic uppercase tracking-widest border-b border-white/10 pb-4">
+      FAQ · 자주 묻는 질문
+    </h3>
+
+    <div class="space-y-6 text-sm text-gray-300 leading-relaxed">
+      <div>
+        <p class="font-black text-white mb-1">Q. 혼자 참여해도 괜찮을까요?</p>
+        <p>A. 참여자의 80% 이상이 혼자 오시는 분들입니다. 호스트와 스탭들이 자연스럽게 어울리실 수 있도록 도와드립니다.</p>
+      </div>
+<div>
+        <p class="font-black text-white mb-1">Q. 나이제한이 있나요?</p>
+        <p>A. 남여 모두 07년생부터 93년생까지 입장 가능합니다.</p>
+      </div>
+
+      <div>
+        <p class="font-black text-white mb-1">Q. 복장 규정(Dress Code)이 있나요?</p>
+        <p>A. 특별한 제한은 없지만, 본인의 매력을 가장 잘 보여줄 수 있는 깔끔하고 센스 있는 룩을 권장드립니다. 슬리퍼·트레이닝복은 입장이 제한될 수 있습니다.</p>
+      </div>
+
+      <div>
+        <p class="font-black text-white mb-1">Q. 파티 시간은 어떻게 되나요?</p>
+        <p>A. 보통 오후 8시30분부터 시작하여 약 3시간 동안 메인 세션이 진행되며, 이후 2차 행사로 이어집니다.</p>
+      </div>
+
+      <div>
+        <p class="font-black text-white mb-1">Q. 성비는 어떻게 맞추나요?</p>
+        <p>A. PIX는 남녀 1:1 성비를 원칙으로 하며, 신청 현황에 따라 유동적으로 조정해 최적의 밸런스를 유지합니다.(남성분의 경우 당일 신청이 많습니다)</p>
+      </div>
+
+      <div>
+        <p class="font-black text-white mb-1">Q. 주차가 가능한가요?</p>
+        <p>A. 전용 주차 공간은 없으며, 인근 공영 주차장 이용 또는 대중교통 이용을 권장드립니다.</p>
       </div>
     </div>
-  </section>
-
-  <section id="join" class="py-32 px-6 max-w-2xl mx-auto">
+  </div>
+</section>
+  <section id="join" class="py-32 px-6 max-w-2xl mx-auto border-t border-white/5">
     <h2 class="text-5xl font-black italic text-center mb-16 uppercase underline decoration-white/10 underline-offset-8">Registration</h2>
     
     <form id="pix-form" onsubmit="submitToGoogleForm(event)" class="space-y-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="md:col-span-2 border-b border-white/10 pb-2">
-          <label class="text-[10px] font-black text-gray-600 uppercase tracking-widest">Select Date</label>
-          <select id="formUrl" required class="w-full bg-transparent py-3 focus:outline-none font-bold text-white">
-            <option value="" class="bg-black text-gray-500">날짜를 선택해 주세요</option>
-            <option value="https://docs.google.com/forms/d/e/1FAIpQLSe1uOnq_r8W16u1kaZNo326NOw2kYdTHwGhbUm4MNS58RzJMg/formResponse" class="bg-black text-white">02월 06일 (금) 신촌 파티</option>
+      <div class="border-b border-white/10 pb-4">
+        <label class="text-[10px] font-black text-gray-500 uppercase tracking-widest block mb-2">Select Date & Location</label>
+        <select id="formUrl" required class="w-full bg-transparent py-2 focus:outline-none font-bold text-white text-xl">
           </select>
-        </div>
-        
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <input name="entry.1271163545" required placeholder="이름 (NAME)" class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
         <input name="entry.2043201145" required placeholder="나이 (AGE)" class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
-        
         <input name="entry.84832899" required placeholder="연락처 (PHONE)" class="md:col-span-2 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
+        <input name="entry.1490638509" required placeholder="인스타그램 ID (@포함 필수)" class="md:col-span-2 bg-white/5 border border-white/20 rounded-2xl px-6 py-4 focus:outline-none font-black text-yellow-400 placeholder-yellow-400/30">
         
-        <input name="entry.1490638509" required placeholder="SNS ID (@포함 필수,없을경우 0입력)" class="md:col-span-2 bg-white/5 border border-white/20 rounded-2xl px-6 py-4 focus:outline-none font-black text-yellow-400 placeholder-yellow-400/30">
-
         <select name="entry.1285611880" id="gender" required class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold uppercase">
-          <option value="" class="bg-black text-gray-500 italic">성별 (GENDER)</option>
+          <option value="" class="bg-black text-gray-500">성별 (GENDER)</option>
           <option value="남" class="bg-black">남성 (MALE)</option>
           <option value="여" class="bg-black">여성 (FEMALE)</option>
         </select>
         <input name="entry.1839414996" placeholder="MBTI" class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold uppercase">
-
         <input name="entry.1251778023" placeholder="직업 (JOB)" class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
         <input name="entry.528781690" placeholder="취미 (HOBBY)" class="bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
-        
         <input name="entry.790058610" placeholder="이상형 (IDEAL TYPE)" class="md:col-span-2 bg-white/5 border border-white/10 rounded-2xl px-6 py-4 focus:outline-none font-bold">
       </div>
 
-      <div class="glass p-8 rounded-[3rem] space-y-6">
-        <h4 class="text-xs font-black text-white uppercase tracking-widest border-b border-white/10 pb-4 italic font-bold">PIX Code of Conduct</h4>
+      <div class="glass p-8 rounded-[3rem] space-y-8 border border-white/10">
+        <h4 class="text-xs font-black text-white uppercase tracking-widest border-b border-white/10 pb-4 italic">PIX Code of Conduct (운영 규정)</h4>
         
-        <div class="policy-item">
-          <p class="text-[11px] font-black text-yellow-400 mb-1 uppercase tracking-widest">Identification</p>
-          <p class="text-[11px] text-gray-500 leading-relaxed">입장 시 <strong>신분증 확인</strong>이 필수입니다. 미지참 시 입장이 제한되며 미성년자는 참여 불가합니다.</p>
+        <div class="pl-6 border-l-2 border-yellow-400">
+          <p class="text-[11px] font-black text-yellow-400 mb-1 uppercase tracking-widest">1. Identification</p>
+          <p class="text-[11px] text-gray-400 leading-relaxed">입장 시 <strong>실물 신분증 확인</strong>이 필수입니다. 미성년자는 절대 참여 불가하며, 신분증 미지참 시 환불 없이 입장이 제한됩니다.</p>
         </div>
 
-        <div class="policy-item">
-          <p class="text-[11px] font-black text-yellow-400 mb-1 uppercase tracking-widest">Refund & Date Change</p>
-          <p class="text-[11px] text-gray-500 leading-relaxed italic font-bold text-white/80">
-            파티 시작 7일 전부터 환불 및 날짜 변경은 불가합니다.<br>
-            (예: 토요일 파티 기준 전주 금요일 24:00까지만 환불 가능)
+        <div class="pl-6 border-l-2 border-white/20">
+          <p class="text-[11px] font-black text-white mb-1 uppercase tracking-widest">2. Refund Policy</p>
+          <p class="text-[11px] text-white/90 leading-relaxed font-bold italic">
+            파티 시작 7일 전까지만 100% 환불 및 날짜 변경이 가능합니다. 그 이후에는 어떠한 사유로도 변경/환불이 불가합니다.
           </p>
         </div>
 
-        <div class="policy-item border-red-900/50">
-          <p class="text-[11px] font-black text-red-500 mb-1 uppercase tracking-widest">Behavioral Policy</p>
-          <p class="text-[11px] text-gray-500 leading-relaxed">
-            만취자, 과도한 스킨십 등 피해 행위 시 <strong>즉시 귀가 조치</strong>됩니다. 
-            사고 책임은 본인에게 있으며, 기물 손괴 시 <strong>원가 배상</strong>이 원칙입니다.
-          </p>
+        <div class="pl-6 border-l-2 border-red-500">
+          <p class="text-[11px] font-black text-red-500 mb-1 uppercase tracking-widest">3. Behavioral Issues</p>
+          <p class="text-[11px] text-gray-400 leading-relaxed">만취, 과도한 스킨십, 욕설 등 비매너 행위 적발 시 <strong>즉시 강제 퇴거</strong> 조치됩니다. (환불 불가)</p>
         </div>
 
-        <div class="policy-item border-red-500">
-          <p class="text-[11px] font-black text-red-500 mb-1 uppercase tracking-widest">Restrict Industry Staff</p>
-          <p class="text-[11px] text-gray-500 leading-relaxed italic">
-            <strong>타 파티 관계자(호스트, 스탭)는 입장이 엄격히 금지됩니다.</strong> 적발 시 즉시 강제 퇴거 및 향후 민/형사상 법적 조치가 취해질 수 있습니다.
-          </p>
+        <div class="pl-6 border-l-2 border-red-800">
+          <p class="text-[11px] font-black text-red-700 mb-1 uppercase tracking-widest">4. Industry Ban</p>
+          <p class="text-[11px] text-gray-400 leading-relaxed font-bold">타 파티 호스트 및 스탭 등 업계 관계자는 입장이 엄격히 금지됩니다. 적발 시 즉시 퇴거 및 법적 대응합니다.</p>
         </div>
 
-        <div class="policy-item">
-          <p class="text-[11px] font-black text-white mb-1 uppercase tracking-widest">Filming Consent</p>
-          <p class="text-[11px] text-gray-500 leading-relaxed">
-            파티 중 일부 촬영이 진행됩니다. 인물 식별 불가 수준의 <strong>블러 처리</strong> 후 홍보용으로 활용될 수 있습니다.
-          </p>
+        <div class="pl-6 border-l-2 border-white/20">
+          <p class="text-[11px] font-black text-white mb-1 uppercase tracking-widest">5. Filming & Damage</p>
+          <p class="text-[11px] text-gray-400 leading-relaxed">내부 홍보용 촬영이 진행될 수 있습니다(블러 처리). 기물 파손 시 본인에게 원가 배상 책임이 있습니다.</p>
         </div>
         
-        <p class="text-[10px] text-center text-gray-600 font-bold uppercase tracking-widest pt-4 italic">규정 위반 시 어떠한 경우에도 환불 불가 및 강제 퇴거됩니다.</p>
+        <p class="text-[10px] text-center text-gray-600 font-bold uppercase tracking-widest pt-4 italic">규정 미숙지로 인한 불이익은 책임지지 않습니다.</p>
       </div>
 
-      <button type="submit" class="w-full bg-white text-black py-7 rounded-full font-black hover:bg-yellow-400 transition-all shadow-[0_20px_60px_rgba(255,255,255,0.1)] uppercase tracking-[0.5em] text-sm">
-        Agree and Fix the Night
+      <button type="submit" class="w-full bg-white text-black py-8 rounded-full font-black hover:bg-yellow-400 transition-all shadow-[0_20px_60px_rgba(255,255,255,0.1)] uppercase tracking-[0.5em] text-sm">
+        Agree and Apply
       </button>
     </form>
   </section>
 
+  <section id="archive" class="py-32 px-6 max-w-5xl mx-auto border-t border-white/5">
+    <div class="mb-10 opacity-30">
+      <h2 class="text-[10px] font-black tracking-[0.4em] text-gray-600 uppercase mb-2 text-center md:text-left">Past Sessions</h2>
+      <h3 class="text-4xl font-black italic tracking-tighter text-center md:text-left">ARCHIVE</h3>
+    </div>
+    <div id="archive-container" class="grid grid-cols-2 md:grid-cols-4 gap-4 opacity-40 grayscale hover:grayscale-0 transition-all duration-700"></div>
+  </section>
+
   <section id="account" class="py-32 px-6 max-w-2xl mx-auto hidden animate-[fadeIn_0.5s_ease-out]">
-    <div class="glass p-12 md:p-20 rounded-[4rem] text-center space-y-12 shadow-[0_0_100px_rgba(255,255,255,0.02)]">
+    <div class="glass p-12 md:p-20 rounded-[4rem] text-center space-y-12">
       <div class="space-y-4">
         <div class="inline-block px-4 py-1 border border-yellow-400/50 text-yellow-400 text-[10px] font-black rounded-full uppercase italic">Request Confirmed</div>
         <h2 class="text-5xl font-black italic tracking-tighter uppercase">PAYMENT</h2>
@@ -171,8 +192,8 @@
       </div>
 
       <div class="py-12 border-y border-white/5 space-y-4">
-        <p class="text-xl font-bold italic tracking-widest">새마을금고 (MG BANK)</p>
-        <p class="text-4xl md:text-5xl font-black tracking-tighter text-white neon-text">9003 2636 77387</p>
+        <p class="text-xl font-bold italic tracking-widest text-gray-500">새마을금고 (MG BANK)</p>
+        <p class="text-4xl md:text-6xl font-black tracking-tighter text-white neon-text">9003 2636 77387</p>
         <p class="text-xl font-black uppercase text-gray-400 italic tracking-tighter underline underline-offset-8 decoration-white/10">HAN DONG HO</p>
       </div>
 
@@ -182,10 +203,13 @@
 
       <p class="text-[10px] text-gray-600 font-bold tracking-widest uppercase italic">
         입금자명: 성함 + 연락처 뒷 2자리<br>
-        (입금 확인 후 24시간 이내로 안내 문자가 전송됩니다.)
+        (입금 확인 후 24시간 이내로 확정 안내가 전송됩니다.)
       </p>
     </div>
   </section>
+
+
+
 </main>
 
 <footer class="py-20 text-center opacity-20 border-t border-white/5 font-black text-[10px] uppercase tracking-[0.4em]">
@@ -193,24 +217,120 @@
 </footer>
 
 <script>
+  // ★ 파티 데이터 관리
+  const PARTIES = [
+    { 
+      date: '2026-02-06', 
+      name: '신촌 프라이빗 세션', 
+      location: '신촌역 도보 5분이내', 
+      capacity: {
+  male: 45,
+  female: 45
+},
+current: {
+  male: 2,
+  female: 10
+},
+      form: 'https://docs.google.com/forms/d/e/1FAIpQLSe1uOnq_r8W16u1kaZNo326NOw2kYdTHwGhbUm4MNS58RzJMg/formResponse' 
+    },
+{
+  date: '2026-02-14',
+  name: '신촌 프라이빗 세션',
+  location: '신촌역 도보 5분 이내',
+
+  capacity: {
+    male: 45,
+    female: 45
+  },
+  current: {
+    male: 1,
+    female: 4
+  },
+
+  form: 'https://docs.google.com/forms/d/1VDZmj_TjJa_WoRyD-FuuOfbeObJviv6mZ6BAeeh4ojI/edit'
+},
+
+    { date: '2026-01-10', name: 'PIX 런칭 파티', location: '신촌 라운지', male: 12, female: 12 },
+    { date: '2026-01-17', name: 'PIX 2회 세션', location: '신촌 라운지', male: 12, female: 12 }
+  ];
+
+  function init() {
+    const now = new Date();
+    now.setHours(0,0,0,0);
+    
+    const container = document.getElementById('party-container');
+    const archive = document.getElementById('archive-container');
+    const select = document.getElementById('formUrl');
+    
+    select.innerHTML = '<option value="" class="bg-black text-gray-500">날짜 및 장소를 선택하세요</option>';
+
+    PARTIES.forEach(p => {
+      const pDate = new Date(p.date);
+      const isPast = pDate < now;
+
+      if (isPast) {
+        archive.innerHTML += `
+          <div class="relative aspect-[3/4] overflow-hidden rounded-2xl glass border-white/5">
+            <div class="absolute inset-u0 bg-black/60 z-10"></div>
+            <div class="absolute bottom-4 left-4 z-20">
+                <p class="text-[9px] font-black text-white/40 uppercase tracking-widest">${p.date}</p>
+                <p class="text-[10px] font-bold text-white/50 uppercase italic">${p.name}</p>
+            </div>
+            <div class="absolute top-4 right-4 z-20 border border-white/20 px-2 py-1 rounded text-[8px] font-black uppercase text-white/30 italic">Closed</div>
+          </div>`;
+      } else {
+        // ★ 수정된 부분: 총 정원 (/12) 텍스트를 text-white/50 과 3xl 크기로 키워서 가독성 확보
+        container.innerHTML += `
+          <div class="glass p-8 md:p-14 rounded-[3rem] relative overflow-hidden status-box">
+            <div class="flex flex-col md:flex-row justify-between items-center md:items-end gap-10 relative z-10">
+              <div class="space-y-4 w-full text-center md:text-left">
+                <div class="inline-block px-3 py-1 bg-yellow-400 text-black text-[9px] font-black rounded-full uppercase tracking-tighter mb-2">Registration Open</div>
+                <h3 class="text-6xl md:text-8xl font-black italic tracking-tighter leading-none">${p.date.slice(5).replace('-','.')}</h3>
+                <p class="text-white font-black text-xl italic tracking-widest underline underline-offset-8 decoration-yellow-400/50">${p.location}</p>
+              </div>
+              
+              <div class="flex gap-8 md:gap-16 font-black italic bg-white/5 p-8 md:p-10 rounded-[2.5rem] border border-white/10 w-full md:w-auto justify-center shadow-2xl">
+                <div class="text-center border-r border-white/10 pr-8 md:pr-16">
+                  <p class="text-[10px] text-gray-500 mb-2 not-italic tracking-tighter uppercase font-bold">MALE</p>
+                  <p class="text-5xl md:text-7xl neon-text">${p.current.male}<span class="text-white/50 text-3xl md:text-4xl ml-2 align-baseline">/${p.capacity.male}</span></p>
+                </div>
+                <div class="text-center">
+                  <p class="text-[10px] text-gray-600 mb-2 not-italic tracking-tighter uppercase font-bold">FEMALE</p>
+                  <p class="text-5xl md:text-7xl neon-text">${p.current.female}<span class="text-white/50 text-3xl md:text-4xl ml-2 align-baseline">/${p.capacity.female}</span></p>
+                </div>
+              </div>
+            </div>
+          </div>`;
+        
+        select.innerHTML += `<option value="${p.form}" class="bg-black text-white">${p.date} (${p.location})</option>`;
+      }
+    });
+  }
+
   function submitToGoogleForm(e) {
     e.preventDefault();
-    const googleFormUrl = document.getElementById("formUrl").value;
+    const url = document.getElementById("formUrl").value;
+    if(!url) return alert("날짜를 선택해 주세요!");
+    
     const formData = new FormData(document.getElementById("pix-form"));
     const userName = document.querySelector('input[name="entry.1271163545"]').value;
     const dateText = document.getElementById("formUrl").options[document.getElementById("formUrl").selectedIndex].text;
 
-    fetch(googleFormUrl, { method: "POST", mode: "no-cors", body: formData }).then(() => {
-      const gender = document.getElementById("gender").value;
-      let price = (gender === "남") ? "40,000원" : "25,000원";
-      const smsMessage = `PIX 신청 완료! \n- 성함: ${userName} \n- 날짜: ${dateText} \n입금 완료했습니다.`;
-      document.getElementById("smsBtn").href = `sms:01057416107?body=${encodeURIComponent(smsMessage)}`;
+    fetch(url, { method: "POST", mode: "no-cors", body: formData }).then(() => {
+      const g = document.getElementById("gender").value;
+      let price = (g === "남") ? "40,000원" : "25,000원";
+      const sms = `PIX 신청 완료! \n- 성함: ${userName} \n- 일정: ${dateText} \n입금 완료했습니다.`;
+      
+      document.getElementById("smsBtn").href = `sms:01057416107?body=${encodeURIComponent(sms)}`;
       document.getElementById("accountInfo").innerText = `${userName}님 | ${dateText} | ${price}`;
       document.getElementById("join").classList.add("hidden");
       document.getElementById("account").classList.remove("hidden");
+      
       window.scrollTo({ top: document.getElementById("account").offsetTop - 100, behavior: "smooth" });
-    }).catch(err => alert("System Error. Please try again."));
+    }).catch(() => alert("Error. Please try again."));
   }
+
+  window.onload = init;
 </script>
 
 </body>
