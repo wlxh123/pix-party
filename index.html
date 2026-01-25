@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>PROJECT PIX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-black text-white">
+
+<header class="fixed top-0 w-full z-50 bg-black/80 border-b border-white/10">
+  <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+    <div class="text-xl font-bold tracking-widest">PIX</div>
+    <div class="flex gap-6 text-sm">
+      <a href="#story">스토리</a>
+      <a href="#party">파티 일정</a>
+      <a href="#join">신청하기</a>
+    </div>
+  </div>
+</header>
+
+<main class="pt-20">
+
+<section class="relative h-screen flex items-center justify-center">
+  <img src="party1.png" class="absolute inset-0 w-full h-full object-cover opacity-40">
+  <div class="relative text-center">
+    <h1 class="text-4xl md:text-6xl font-extrabold mb-6">
+      우리가 고른 밤,<br>우리가 FIX합니다
+    </h1>
+  </div>
+</section>
+
+<section id="story" class="py-32 px-6 max-w-4xl mx-auto text-center">
+  <h2 class="text-3xl font-bold mb-10">PIX의 시작</h2>
+  <p class="text-gray-300 leading-relaxed">
+    우리도 한때는 게스트였습니다.<br>
+    수많은 파티를 다녔지만 늘 아쉬웠죠.<br><br>
+    그 아쉬움이 모여 PROJECT PIX가 시작됐습니다.
+  </p>
+</section>
+
+<section id="party" class="py-32 px-6 max-w-6xl mx-auto text-center">
+  <h2 class="text-3xl font-bold mb-16">Upcoming Party</h2>
+
+  <div class="border border-white/20 p-8 max-w-md mx-auto">
+    <h3 class="text-2xl font-bold mb-2">2월 6일 (금)</h3>
+    <p class="text-gray-400">
+      신촌<br>
+      1차 20:30 – 23:30<br>
+      2차 24:00 – 02:30
+    </p>
+  </div>
+</section>
+
+<section id="join" class="py-32 px-6 max-w-xl mx-auto">
+  <h2 class="text-3xl font-bold text-center mb-12">파티 신청</h2>
+
+  <form onsubmit="submitForm(event)" class="space-y-6">
+
+    <select id="partyDate" required class="w-full bg-black border-b py-2">
+      <option value="">참여 날짜 선택</option>
+      <option value="2월 6일">2월 6일 (금)</option>
+    </select>
+
+    <input required placeholder="이름" class="w-full bg-transparent border-b py-2">
+    <input required placeholder="전화번호" class="w-full bg-transparent border-b py-2">
+    <input required placeholder="나이" class="w-full bg-transparent border-b py-2">
+
+    <select id="gender" required class="w-full bg-black border-b py-2">
+      <option value="">성별 선택</option>
+      <option value="male">남자</option>
+      <option value="female">여자</option>
+    </select>
+
+    <input placeholder="직업" class="w-full bg-transparent border-b py-2">
+    <input placeholder="MBTI" class="w-full bg-transparent border-b py-2">
+    <input placeholder="취미" class="w-full bg-transparent border-b py-2">
+    <input placeholder="이상형" class="w-full bg-transparent border-b py-2">
+
+    <button class="w-full bg-white text-black py-4 font-bold">
+      신청 완료
+    </button>
+  </form>
+</section>
+
+<section id="account" class="py-32 px-6 max-w-xl mx-auto hidden text-center">
+  <h2 class="text-3xl font-bold mb-8">입금 안내</h2>
+
+  <p id="accountInfo" class="mb-6 text-lg"></p>
+
+  <div class="border border-white/20 p-6 mb-6">
+    <p class="font-bold mb-1">한동호</p>
+    <p class="mb-1">새마을금고</p>
+    <p class="text-xl font-bold">9003 2636 77387</p>
+  </div>
+
+  <p class="text-gray-400 text-sm leading-relaxed">
+    모든 참가비는 <b>1차 기준 (3시간)</b>입니다.<br>
+    입금자명은 <b>이름 + 전화번호 뒤 2자리</b>로 부탁드립니다.
+  </p>
+</section>
+
+</main>
+
+<footer class="py-10 text-center text-gray-500 text-sm">
+  © PROJECT PIX
+</footer>
+
+<script>
+  function submitForm(e) {
+    e.preventDefault();
+
+    const date = document.getElementById("partyDate").value;
+    const gender = document.getElementById("gender").value;
+
+    let price = "";
+    if (gender === "male") price = "40,000원";
+    if (gender === "female") price = "25,000원";
+
+    document.getElementById("accountInfo").innerHTML =
+      `${date} 파티 참가비<br><b>${price}</b>`;
+
+    document.getElementById("join").classList.add("hidden");
+    document.getElementById("account").classList.remove("hidden");
+    document.getElementById("account").scrollIntoView({ behavior: "smooth" });
+  }
+</script>
+
+</body>
+</html>
